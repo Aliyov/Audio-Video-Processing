@@ -1,0 +1,257 @@
+/* Base dark theme styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Changa', 'Segoe UI', 'Roboto', sans-serif;
+    color: #e2e2e2;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Image via ::before */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    filter: brightness(0.7); /* Optional: tweak brightness or add blur etc */
+}
+
+/* Rest of your content styles stay the same */
+
+
+h1 {
+    text-align: center;
+    padding: 25px 10px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #e1d640, #9b59b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Container glassy card */
+.container {
+    max-width: 720px;
+    margin: 40px auto;
+    background: rgba(37, 37, 37, 0.695);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 0 30px rgba(222, 191, 123, 0.75);
+    border: 1px solid rgba(146, 255, 22, 0.1);
+}
+
+/* Upload section */
+.upload {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.upload label {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+/* Inputs and dropdowns */
+input[type="file"],
+select,
+input[type="text"] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 6px;
+    background-color: #161b22;
+    color: #ffffff;
+    border: 1px solid #2c2f36;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+select:focus,
+input[type="text"]:focus {
+    border: 1px solid #fec94f;
+    background-color: #0f1011;
+}
+
+/* Dropdown section */
+.dropdown {
+    margin: 20px 0;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #f0e9e9;
+}
+
+/* Buttons */
+button {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #fee14f, #9b9a68);
+    color: #0e1117;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: none;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #eeeee8, #fede4f);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 242, 254, 0.25);
+    transform: scale(1.15);
+}
+
+button:disabled {
+    background-color: #555;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+
+
+/* Processing list items */
+#processingList {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+#processingList li {
+    padding: 14px;
+    background-color: #1b1f26;
+    border-left: 4px solid #5bfe4f;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#processingList li:hover {
+    background-color: #2d2e22;
+}
+
+/* Clean Button special color */
+#cleanButton {
+    background: linear-gradient(135deg, #ff416c, #7c6c00);
+    color: #fff;
+}
+
+#cleanButton:hover {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    transform: translateY(-2px);
+    transform: scale(1.15);
+}
+
+/* Audio settings section */
+#audioSettings {
+    margin-top: 20px;
+}
+
+/* Hidden utility class */
+.hidden {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
+
+/* Custom File Upload */
+.custom-file-upload {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload label {
+    padding: 14px 22px;
+    background: linear-gradient(135deg, #d3f305, #f36969);
+    color: #0e1117;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-file-upload label:hover {
+    background: linear-gradient(135deg, #f5ff9c, #ffb2b2);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(0, 242, 254, 0.25);
+    transform: scale(1.15);
+}
+
+#fileName {
+    font-size: 0.95rem;
+    color: #aaa;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 240px;
+}
+
+.developer-info {
+    position: fixed;
+    top: 30px;
+    left: 60px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: rgba(62, 62, 45, 0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    box-shadow: 4px 4px 4px rgba(174, 156, 115, 0.5);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.developer-info:hover {
+    background-color: rgba(95, 86, 39, 0.9);
+    transform: scale(1.1);
+}

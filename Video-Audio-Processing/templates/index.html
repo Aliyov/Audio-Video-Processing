@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Video Processing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</head>
+<body>
+
+<h1>Audio Video Processing</h1>
+
+<div class="container">
+<!---
+
+    <div class="upload">
+        <input type="file" id="videoFile" accept="video/*">
+        <label for="fileUpload">Upload Audio/Video File:</label>
+        <button onclick="deleteFile()">Delete File</button>
+        <button onclick="uploadButton()">Upload Video</button>
+    </div>
+
+-->
+    <div class="upload">
+        <label for="videoFile">Upload Audio/Video File:</label>
+        
+        <div class="custom-file-upload">
+            <label for="videoFile" id="fileLabel">Choose File</label>
+            <span id="fileName">No file chosen</span>
+            <input type="file" id="videoFile" accept="video/*" onchange="updateFileName()">
+        </div>
+    
+        <button onclick="deleteFile()">Delete File</button>
+        <button onclick="uploadButton()">Upload Video</button>
+    </div>
+    
+    <div class="dropdown">
+        <label for="audioOptions">Audio Options:</label>
+        <select id="audioOptions" onchange="showAudioSettings()">
+            <option value="">-- Select Option --</option>
+            <option value="phoneLikeFiltering">Phone-like filtering (side attenuation + band pass)</option>
+            <option value="gainCompressor">Gain Compressor</option>
+            <option value="voiceEnhance">Voice Enhancement</option>
+            <option value="carLikeFiltering">Car-like filtering (side amplification + low pass)</option>
+            <option value="denoiseDelay">Denoise + Delay</option>
+        </select>
+    </div>
+
+    <!-- dynamic audio settings -->
+    <div id="audioSettings"></div> 
+
+    <!-- Add button -->
+    <button onclick="addAudioSetting()" id="addButton" style="display:none;">Add</button>
+
+    <!-- Task list -->
+    <h3>Processing List:</h3>
+    <ul id="processingList"></ul>
+
+    <!-- hidden audio settings -->
+    <div id="audioSettings" class="hidden">
+        <label>Setting 1:
+            <input type="text" id="audioSetting1">
+        </label>
+        <label>Setting 2:
+            <input type="text" id="audioSetting2">
+        </label>
+    </div>
+
+    <!-- Clean Button -->
+    <button type="button" onclick="cleanProcessingList()" id="cleanButton" style="display:none;">Clean</button>
+
+    <div class="dropdown">
+        <label for="videoOptions">Video Options:</label>
+        <select id="videoOptions" onchange="showVideoSettings()"> <!-- Added onchange -->
+            <option value="">-- Select Option --</option>
+            <option value="grayscale">Grayscale</option>
+            <option value="colorInvert">Color Invert</option>
+            <option value="frameIncrease">Frame Interpolation</option>
+            <option value="upscale">Upscale</option>
+        </select>
+    </div>
+    
+    <!-- Remove onclick from addButton -->
+    <button id="addButton" style="display:none;">Add</button>
+
+    
+    <div class="button-container">
+        <button type="button" onclick="processFile()">Process</button>
+        <button type="button" onclick="playVideo()">Play Video</button>
+    </div>
+
+    <video id="finalVideo" width="640" controls>
+        <source src="uploads/final_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+
+</div>
+
+<div class="developer-info">
+    <span>Developed by: <strong>Ali Aliyev</strong></span>
+</div>
+
+<script src="scripts.js"></script>
+
+</body>
+</html>
