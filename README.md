@@ -25,11 +25,11 @@ A Python-based HTTP server with a web frontend for uploading videos, configuring
 
 ---
 
-![Image](https://github.com/user-attachments/assets/ec0c1903-47d5-42c1-94f1-26f7a29f68ab)
+![Image](https://github.com/user-attachments/assets/e7b261c2-3742-4456-a121-826f0bc1b9b4)
 
-![Image](https://github.com/user-attachments/assets/e7c6541f-a39e-4195-8bf8-cc8b78bffdb6)
+![Image](https://github.com/user-attachments/assets/0cd33085-5451-4f07-a0c0-4f6d90503794)
 
-![Image](https://github.com/user-attachments/assets/2177c27d-3305-4834-939d-aa12ec4f5948)
+![Image](https://github.com/user-attachments/assets/25f4e587-bfc6-4218-a5e7-b10a32c21029)
 
 ## 📦 Technologies Used
 
