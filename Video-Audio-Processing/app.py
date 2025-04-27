@@ -153,8 +153,8 @@ def uploaded_file(filename):
 
 def check_and_extract_audio(video_name, settings_data):
     # Define paths for the audio and video without audio
-    extracted_audio_path = os.path.join('uploads', 'extracted_audio.mp3')
-    video_without_audio_path = os.path.join('uploads', 'no_audio.mp4')
+    extracted_audio_path = os.path.join('uploads', 'output_only_sound.mp3')
+    video_without_audio_path = os.path.join('uploads', 'output_no_sound_video.mp4')
     original_video_path = os.path.join('uploads', video_name)
     
     # Check if both files exist
@@ -224,7 +224,7 @@ def extract_audio_video(video_name):
     uploads_folder = 'uploads'
     video_file = os.path.join(uploads_folder, video_name)
 
-    extracted_audio = os.path.join(uploads_folder, "extracted_audio.mp3")
+    extracted_audio = os.path.join(uploads_folder, "output_only_sound.mp3")
     video_without_audio = os.path.join(uploads_folder, "output_no_sound_video.mp4")
 
     try:
