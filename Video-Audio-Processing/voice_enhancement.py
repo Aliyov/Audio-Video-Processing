@@ -11,11 +11,12 @@ def pre_emphasis(signal, alpha=0.97):
     emphasized = np.append(signal[0], signal[1:] - alpha * signal[:-1])
     return emphasized
 
-# High-pass Butterworth filter function
-def high_pass_filter(signal, sr, cutoff=80.0, order=4):
+# Band-pass Butterworth filter function (800-6000 Hz)
+def band_pass_filter(signal, sr, lowcut=800.0, highcut=6000.0, order=4):
     nyq = 0.5 * sr
-    normal_cutoff = cutoff / nyq
-    b, a = butter(order, normal_cutoff, btype='highpass', analog=False)
+    low = lowcut / nyq
+    high = highcut / nyq
+    b, a = butter(order, [low, high], btype='band')
     filtered = lfilter(b, a, signal)
     return filtered
 
@@ -31,8 +32,8 @@ def enhance_voice(input_file, output_file, alpha=0.97, filter_order=4):
     # Apply pre-emphasis
     emphasized_signal = pre_emphasis(y, alpha)
 
-    # Apply high-pass filter
-    enhanced_signal = high_pass_filter(emphasized_signal, sr, cutoff=80.0, order=filter_order)
+    # Apply band-pass filter
+    enhanced_signal = band_pass_filter(emphasized_signal, sr, lowcut=800.0, highcut=6000.0, order=filter_order)
 
     # Normalize to avoid clipping
     enhanced_signal /= np.max(np.abs(enhanced_signal))
