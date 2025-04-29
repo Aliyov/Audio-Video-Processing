@@ -222,7 +222,7 @@ function uploadButton() {
     }
 
     const formData = new FormData();
-    formData.append("video", file); // key must match the Flask 'request.files' key
+    formData.append("video", file); 
 
     fetch("/uploads", {
         method: "POST",

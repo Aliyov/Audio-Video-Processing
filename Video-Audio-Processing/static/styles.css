@@ -1,4 +1,3 @@
-/* Base dark theme styles */
 body {
     margin: 0;
     padding: 0;
@@ -9,7 +8,7 @@ body {
     position: relative;
 }
 
-/* Background Image via ::before */
+
 body::before {
     content: "";
     position: fixed;
@@ -22,10 +21,9 @@ body::before {
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
-    filter: brightness(0.7); /* Optional: tweak brightness or add blur etc */
+    filter: brightness(0.7); 
 }
 
-/* Rest of your content styles stay the same */
 
 
 h1 {
@@ -40,7 +38,6 @@ h1 {
     text-transform: uppercase;
 }
 
-/* Container glassy card */
 .container {
     max-width: 720px;
     margin: 40px auto;
@@ -53,7 +50,7 @@ h1 {
     border: 1px solid rgba(146, 255, 22, 0.1);
 }
 
-/* Upload section */
+
 .upload {
     display: flex;
     flex-direction: column;
@@ -67,7 +64,7 @@ h1 {
     color: #ffffff;
 }
 
-/* Inputs and dropdowns */
+
 input[type="file"],
 select,
 input[type="text"] {
@@ -89,7 +86,7 @@ input[type="text"]:focus {
     background-color: #0f1011;
 }
 
-/* Dropdown section */
+
 .dropdown {
     margin: 20px 0;
 }
@@ -101,7 +98,7 @@ label {
     color: #f0e9e9;
 }
 
-/* Buttons */
+
 button {
     padding: 14px 24px;
     background: linear-gradient(135deg, #fee14f, #9b9a68);
@@ -128,7 +125,7 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Button container */
+
 .button-container {
     display: flex;
     justify-content: space-between;
@@ -138,7 +135,7 @@ button:disabled {
 
 
 
-/* Processing list items */
+
 #processingList {
     list-style: none;
     padding: 0;
@@ -159,7 +156,7 @@ button:disabled {
     background-color: #2d2e22;
 }
 
-/* Clean Button special color */
+
 #cleanButton {
     background: linear-gradient(135deg, #ff416c, #7c6c00);
     color: #fff;
@@ -171,17 +168,17 @@ button:disabled {
     transform: scale(1.15);
 }
 
-/* Audio settings section */
+
 #audioSettings {
     margin-top: 20px;
 }
 
-/* Hidden utility class */
+
 .hidden {
     display: none;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 600px) {
     .button-container {
         flex-direction: column;
@@ -196,7 +193,6 @@ button:disabled {
     }
 }
 
-/* Custom File Upload */
 .custom-file-upload {
     display: flex;
     align-items: center;

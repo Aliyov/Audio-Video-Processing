@@ -2,20 +2,11 @@ import subprocess
 import os
 
 def convert_to_grayscale(input_file, output_filename):
-    """
-    Converts a video to grayscale using FFmpeg.
-    
-    Parameters:
-    - input_file (str): Path to the input video file.
-    - output_filename (str): Name of the output video file (e.g., 'output_video.mp4')
-    """
     try:
-        # Ensure the 'uploads' directory exists
         uploads_dir = 'uploads'
         if not os.path.exists(uploads_dir):
             os.makedirs(uploads_dir)
         
-        # Paths for temp and final output
         temp_output = os.path.join(uploads_dir, 'temp_grayscale_video.mp4')
         final_output = os.path.join(uploads_dir, output_filename)
 

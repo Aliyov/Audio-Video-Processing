@@ -12,16 +12,7 @@
 <h1>Audio Video Processing</h1>
 
 <div class="container">
-<!---
 
-    <div class="upload">
-        <input type="file" id="videoFile" accept="video/*">
-        <label for="fileUpload">Upload Audio/Video File:</label>
-        <button onclick="deleteFile()">Delete File</button>
-        <button onclick="uploadButton()">Upload Video</button>
-    </div>
-
--->
     <div class="upload">
         <label for="videoFile">Upload Audio/Video File:</label>
         
@@ -53,7 +44,6 @@
     <!-- Add button -->
     <button onclick="addAudioSetting()" id="addButton" style="display:none;">Add</button>
 
-    <!-- Task list -->
     <h3>Processing List:</h3>
     <ul id="processingList"></ul>
 
@@ -72,7 +62,7 @@
 
     <div class="dropdown">
         <label for="videoOptions">Video Options:</label>
-        <select id="videoOptions" onchange="showVideoSettings()"> <!-- Added onchange -->
+        <select id="videoOptions" onchange="showVideoSettings()"> 
             <option value="">-- Select Option --</option>
             <option value="grayscale">Grayscale</option>
             <option value="colorInvert">Color Invert</option>

@@ -14,7 +14,8 @@ import os, subprocess, re
 
 app = Flask(__name__)
 
-# Set the upload folder
+# upload folder is used for uploading video file from and all extraction, mergin, audio and video filtering happening in this folder
+# also at the end merging happening here. 
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -27,28 +28,33 @@ def index():
     return render_template('index.html')
 
 
+
+# To be note that, this part is little bit need explanation. When user chooses filteres in frontend and press "Process" button, video extracted into 2 separate files,
+# one is just 'extracted audio' and 'video without audio'. 
+# Choosen filters send directly to backend, but shady part is we did not extract filters from json data structure, but we extract necessary settings as a plain text.
+# Loop checking key words like "PHONELIKEFILTERING" and extract necessary values for further process.
+
 @app.route('/settingsSend', methods=['POST'])
 def handle_settings():
     try:
         # Get the JSON data from the request
         data = request.get_json()
         print(data)
-        # Extract the settings from the received data
+        # Extract the settings from the received data 
         settings_data = data.get('settings', [])
         video_name = data.get('videoName', '')
         print("Received video name:", video_name)
-        # Process the settings data (this is just an example)
         print("Received Settings:")
         for setting in settings_data:
             print(setting)
     
+        # For applying video and audio processing we have to extract audio from video make them seperate files for filtering correctly. This line does exactly this.
         extracted_audio, video_without_audio, video_name = check_and_extract_audio(video_name, settings_data)
 
         for setting in settings_data:
             if 'PHONELIKEFILTERING' in setting:
                 match = re.search(r"PHONELIKEFILTERING \| Settings:\s*(\d+),\s*(\d+)", setting)
                 if match:
-                    #Extract the two numbers from the match object
                     sideGainValue = float(match.group(1))
                     filterOrder = int(match.group(2))
                     print(f"User Side Gain : {sideGainValue},User Filter Order: {filterOrder}")
@@ -59,7 +65,6 @@ def handle_settings():
             elif 'CARLIKEFILTERING' in setting:
                 match = re.search(r"CARLIKEFILTERING \| Settings:\s*(\d+),\s*(\d+)", setting)
                 if match:
-                    #Extract the two numbers from the match object
                     sideGainValue2 = float(match.group(1))
                     filterOrder2 = int(match.group(2))
                     print(f"User Side Gain : {sideGainValue2},User Filter Order: {filterOrder2}")
@@ -123,15 +128,15 @@ def handle_settings():
             
             
 
-        # Respond back with a success message (or any other response you need)
+        # Respond back with a success message (just for making debugging easy)
         return jsonify({"message": "Settings received successfully", "status": "success"}), 200
     except Exception as e:
-        # If any error occurs, return an error message
         print("Error:", str(e))
         return jsonify({"message": "Error processing request", "status": "error"}), 500
 
 
 
+# When user press "Play video" it is merging audio and video and make it one complete video file. 
 def merge_all():
     output_final = "uploads/final_video.mp4"
     input_audio = "uploads/output_only_sound.mp3"
@@ -190,7 +195,7 @@ def upload_file():
 
 
 
-
+# Delete button will remove everything in this folder which is exactly what we achieve. 
 @app.route('/delete', methods=['POST'])
 def delete_file():
     upload_folder = 'uploads'
